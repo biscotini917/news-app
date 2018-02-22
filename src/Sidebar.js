@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import database from './index';
 
 export default class Sidebar extends Component {
   constructor() {
@@ -16,7 +17,8 @@ export default class Sidebar extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    console.log('state when clicking in sidebar', this.state)
+    database.ref('Channels').push({name: 'bruce', channelName: this.state.channel})
+    this.setState({channel: ''})
   }
 
   render() {
@@ -29,6 +31,7 @@ export default class Sidebar extends Component {
           <input
             name="channel"
             type="channel"
+            value={this.state.channel}
             onChange={this.handleChange}
             required
           />
