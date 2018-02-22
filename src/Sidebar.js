@@ -6,18 +6,24 @@ export default class Sidebar extends Component {
     this.state = {
       channel: ''
     }
-  this.handleChange = this.handleChange.bind(this)
+  this.handleChange = this.handleChange.bind(this);
+  this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(evt) {
     this.setState({ [evt.target.name]: evt.target.value })
   }
 
+  handleSubmit(evt) {
+    evt.preventDefault();
+    console.log('state when clicking in sidebar', this.state)
+  }
+
   render() {
-    console.log('state', this.state)
+    console.log('state when typing in sidebar', this.state)
     return (
       <sidebar>
-      <form>
+      <form onSubmit={this.handleSubmit}>
       <div>
           <label>New Channel: </label>
           <input
@@ -28,8 +34,8 @@ export default class Sidebar extends Component {
           />
         </div>
         <br />
+        <button type="submit">Create</button>
       </form>
-      <button type="create">Create</button>
       <br />
       <hr />
       <br />

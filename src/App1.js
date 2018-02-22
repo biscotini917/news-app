@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Grid, Col, Row } from 'react-bootstrap';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import News from './News';
 import Sports from './Sports';
 import { flatten, times, range } from 'lodash';
 import Sidebar from './Sidebar';
+
+// import { StickContainer, Sticky } from 'react-sticky';
 
 class App extends Component {
   constructor() {
@@ -19,19 +20,19 @@ class App extends Component {
     }))
 
     return (
-      <Router>
-        <div className="App">
-          <header className="App-header">
-            <h1 id="headerTitle" className="App-title">The Newsroom</h1>
-            <p id="headerContent">Latest News Today</p>
-          </header>
-          <br />
+      <div className="App">
+        <header className="App-header">
+          <h1 id="headerTitle" className="App-title">The Newsroom</h1>
+          <p id="headerContent">Latest News Today</p>
+        </header>
+        <br />
+        <div className="App-intro">
           <Grid>
             <Row className="show-grid">
-              <Col xs={4} md={2}>
-                <div>
-                  <Sidebar />
-                </div>
+              <Col xs={2} md={2}>
+              <div>
+              <Sidebar />
+            </div>
               </Col>
               <Col xs={14} md={10}>
                 {paragraphs.map(paragraph => paragraph)}
@@ -41,17 +42,10 @@ class App extends Component {
             </Row>
           </Grid>
           <br />
-          <div className="toc">
-            <Switch>
-            </Switch>
-          </div>
         </div>
-      </Router>
+      </div>
     );
   }
 }
 
 export default App;
-
-// <Route exact path="/albums" component={StatefulAlbums} />
-// <Route path="/albums/:albumId" component={SingleAlbum} />
