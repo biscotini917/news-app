@@ -40,7 +40,7 @@ export default class Sidebar extends Component {
       <hr />
       <br />
         <section>
-          <h4 className="menu-item">Channels
+          <h4 className="menu-item">Your Channels
         </h4>
         </section>
       </sidebar>
