@@ -62,9 +62,11 @@ export default class Sidebar extends Component {
           <h4 className="menu-item">Your Channels
         </h4>
         {
-          (for var key in this.state.channels) {
-
-          }
+          Object.values(this.state.channels).map((channel) => {
+            return (
+              //TBD
+            )
+          })
         }
         </section>
         </sidebar>
