@@ -61,13 +61,6 @@ export default class Sidebar extends Component {
         <section>
           <h4 className="menu-item">Your Channels
         </h4>
-        {
-          Object.values(this.state.channels).map((channel) => {
-            return (
-              //TBD
-            )
-          })
-        }
         </section>
         </sidebar>
       );
@@ -88,4 +81,12 @@ export default class Sidebar extends Component {
 //     let name = channels[k].name;
 //     console.log(name, channelName)
 //   }
+// }
+
+// {
+//   Object.values(this.state.channels).map((channel) => {
+//     return (
+//       //TBD
+//     )
+//   })
 // }
