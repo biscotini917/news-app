@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import database from './index';
+import * as firebase from 'firebase';
+import { connect } from 'react-redux';
 
-export default class Sidebar extends Component {
-  constructor() {
-    super();
+class Sidebar extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       channel: '',
-      channels: ''
+      channels: '',
+      blah: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,9 +23,8 @@ export default class Sidebar extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    database.ref('Channels').push({ name: 'bruce', channelName: this.state.channel });
+    firebase.database().ref('Channels').push({ name: 'bruce', channelName: this.state.channel });
     this.setState({ channel: '', newChannels: '', name: '' });
-    database.ref('Channels').on('value', this.gotData, this.errData);
   }
 
   gotData(data) {
@@ -37,7 +38,7 @@ export default class Sidebar extends Component {
   }
 
   render() {
-    console.log(Object.values(this.state.channels), 'current channels')
+    console.log(this.props, 'current props')
     return (
       <sidebar>
         <form onSubmit={this.handleSubmit}>
@@ -58,35 +59,29 @@ export default class Sidebar extends Component {
         <hr />
         <br />
         <section>
-          <h4 className="menu-item">Your Channels
+          <h4 className="menu-item">You Channels
         </h4>
+        { !this.props.channels
+          ? <h5>There are no channels</h5>
+          : this.props.channels.map(channel => {
+            return (
+              <div key={channel.channelName}>
+              <h5>{channel.channelName}</h5>
+              </div>
+            )
+          })
+        }
         </section>
-        </sidebar>
-      );
-    }
+      </sidebar>
+    );
   }
-  // {
-    //   (this.state.channels === 0)
-    //   ? <h2> There are no channels </h2>
-    //   : this.state.channels
-    // }
+}
 
-    // gotData(data) {
-      //   let channels = data.val()
-      //   let keys = Object.keys(channels);
-      //   for (let i = 0; i < keys.length; i++) {
-        //     let k = keys[i]
-        //     let channelName = channels[k].channelName;
-        //     let name = channels[k].name;
-        //     console.log(name, channelName)
-        //   }
-        // }
+function mapStateToProps(state, props) {
+  console.log(state.channels, 'current state')
+  return {
+    channels: state.channels
+  }
+}
 
-
-        // {
-        //   Object.values(this.state.channels).map((channel) => {
-        //     return (
-
-        //     )
-        //   })
-        // }
+export default connect(mapStateToProps)(Sidebar)

@@ -1,4 +1,4 @@
-import database from '../index.js'
+import * as firebase from 'firebase';
 
 //action types
 const GET_CHANNELS = 'GET_CHANNELS'
@@ -20,17 +20,9 @@ export default function reducer (channels = [], action) {
 
 //thunk
 export const fetchChannels = () => dispatch => {
-  console.log('fetching userssss');
-  database.ref('Channels').on('value', gotData, errData)
-
-  function gotData(data) {
-    console.log(data, 'data from firebase')
-    let channels = data.val();
-    dispatch(getChannels(channels))
-  }
-  function errData(err) {
-    console.log('Error! issue with pull channels')
-    console.log(err);
-  }
+  const rootRef = firebase.database().ref().child('Channels');
+  rootRef.on('value', channels => {
+    dispatch(getChannels(Object.values(channels.val())))
+  })
 };
 
