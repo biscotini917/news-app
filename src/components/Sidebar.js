@@ -78,9 +78,10 @@ class Sidebar extends Component {
 }
 
 function mapStateToProps(state, props) {
-  console.log(state.channels, 'current state')
+  // console.log(state, 'current state')
   return {
-    channels: state.channels
+    channels: state.channels,
+    stations: state.stations
   }
 }
 

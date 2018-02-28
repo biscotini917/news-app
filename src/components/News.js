@@ -20,7 +20,7 @@ export default class News extends Component {
   }
 
   render() {
-    console.log('current state', this.state.articles)
+    // console.log('current state', this.state.articles)
     return (
       <div className="News">
         <hr />
@@ -31,8 +31,9 @@ export default class News extends Component {
             <h2>There is no content</h2>
             : this.state.articles.map(article => {
               return (
+                <div key={article.title}>
                 <a href={article.url}>
-                  <div key={article.title} className="article">
+                  <div className="article">
                     <img src={article.urlToImage} alt="article" width="200px" className="images" />
                     <div className="articleContainer">
                       <h4><b>{article.title}</b></h4>
@@ -41,6 +42,7 @@ export default class News extends Component {
                     </div>
                   </div>
                 </a>
+                </div>
               )
             })
           }

@@ -15,6 +15,27 @@
   clear: both;
 }
 
+.channel-grid-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* .channel-grid {
+  display: flex;
+  flex-wrap: wrap;
+} */
+
+.channel-grid-item {
+  border: 1px solid #fff;
+  width: 300px;
+  height: 300px;
+}
+
+.logo {
+  display: flex;
+  justify-content: flex-start;
+}
+
 #headerContent {
   font-size: 20px;
   text-align: center;

@@ -37,7 +37,7 @@ export default class News extends Component {
                     <div className="articleContainer">
                       <h4><b>{article.title}</b></h4>
                       <p>{article.description}r</p>
-                      <p><a href={article.url}>Link</a></p>
+                      <p><a href={article.url}><strong>Link</strong></a></p>
                     </div>
                   </div>
                 </a>

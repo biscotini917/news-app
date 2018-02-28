@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
+import logo from './NRlogo.png'
 // import { removeCurrentUser } from '../redux/auth';
 
 /* -----------------    COMPONENT     ------------------ */
@@ -16,6 +17,7 @@ export default class Navbar extends React.Component {
     return (
       <nav className="navbar navbar-default">
         <div className="container">
+        <img className="logo" src={logo} />
           <div>
               {this.renderLogout()}
               {this.renderLoginSignup()}
