@@ -9,10 +9,11 @@ export default class News extends Component {
   }
 
   componentDidMount() {
-    axios.get(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${newsAPIKey}`)
+    return axios.get('http://172.16.22.215:8080/api/users')
       .then(res => res.data)
       .then(news => {
         this.setState(news)
+        console.log(news, 'hi')
       })
       .catch(error => {
         console.log(error)
