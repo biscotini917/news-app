@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { newsAPIKey } from '../secrets';
 
 export default class News extends Component {
   constructor() {
@@ -9,14 +8,6 @@ export default class News extends Component {
   }
 
   componentDidMount() {
-    axios.get(`https://newsapi.org/v2/top-headlines?sources=espn&apiKey=${newsAPIKey}`)
-      .then(res => res.data)
-      .then(news => {
-        this.setState(news)
-      })
-      .catch(error => {
-        console.log(error)
-      })
   }
 
   render() {
