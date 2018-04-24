@@ -49,18 +49,20 @@ class App extends Component {
                 {
                   paragraphs.map(paragraph => paragraph)
                 }
-                <div>
-                  <News />
-                </div>
-                <div>
-                  <Sports />
-                </div>
               </Col>
             </Row>
           </Grid>
           <br />
           <div className="toc">
             <Switch>
+            <Route
+            path="/news"
+            component={News}
+            />
+            <Route
+            path="/sports"
+            component={Sports}
+            />
             </Switch>
           </div>
         </div>

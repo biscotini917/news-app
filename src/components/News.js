@@ -11,7 +11,7 @@ export default class News extends Component {
   }
 
   render() {
-    console.log('current state', this.state.articles)
+    console.log('u are on the news component', this.state.articles)
     return (
       <div className="News">
         <hr />
